@@ -595,6 +595,11 @@ pcsx2:
             choices:
                 "Off": 0
                 "On":  1
+        multitap:
+            prompt: MULTITAP
+            choices:
+                "Off": 0
+                "On":  1                
 
 ppsspp:
   features: [ratio, internal_resolution]

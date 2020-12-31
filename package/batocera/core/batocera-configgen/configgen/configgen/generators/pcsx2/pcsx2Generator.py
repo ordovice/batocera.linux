@@ -94,6 +94,14 @@ def configureVM(config_directory, system):
     
     if os.path.isfile(configFileName):  
         pcsx2VMConfig.read(configFileName)
+        
+    if system.isOptSet('multitap') and system.getOptBoolean('multitap'):
+        pcsx2VMConfig.set("EmuCore","MultitapPort0_Enabled","enabled")
+        pcsx2VMConfig.set("EmuCore","MultitapPort1_Enabled","enabled")
+    else:
+        pcsx2VMConfig.set("EmuCore","MultitapPort0_Enabled","disabled")
+        pcsx2VMConfig.set("EmuCore","MultitapPort1_Enabled","disabled") 
+
     
     if not pcsx2VMConfig.has_section("EmuCore/GS"):
         #Some defaults needed on first run 
@@ -107,8 +115,8 @@ def configureVM(config_directory, system):
         pcsx2VMConfig.set("EmuCore/GS","FrameratePAL", "50")   
         pcsx2VMConfig.set("EmuCore/GS","FramesToDraw", "2")
         pcsx2VMConfig.set("EmuCore/GS","FramesToSkip", "2")  
-        pcsx2VMConfig.set("EmuCore/GS","MultitapPort0_Enabled","enabled")
-        pcsx2VMConfig.set("EmuCore/GS","MultitapPort1_Enabled","enabled")
+        
+
      
 
     if system.isOptSet('vsync'):
